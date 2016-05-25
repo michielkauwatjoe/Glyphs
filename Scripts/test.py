@@ -23,7 +23,7 @@ def printFont(f):
     print 'Path', f.filepath
 
 def testVanilla():
-    w = Window((200, 70), "Window Test")
+    w = Window((800, 600), "Window Test")
     buildList(w)
     #w.myButton = Button((10, 10, -10, 20), "My Button")
     #w.myTextBox = TextBox((10, 40, -10, 17), "My Text Box")
@@ -53,6 +53,15 @@ def buildList(view):
         columnDescriptions=getColumnDescriptions(),
         rowHeight=18,
     )
+
+    styleItems = []
+
+    for f in Glyphs.fonts:
+        styleName = f.familyName + ' ' + f.masters[0].name
+        d = dict(styleName=styleName)
+        styleItems.append(d)
+
+    view.styleList.set(styleItems)
 
 def getColumnDescriptions():
     u"""
